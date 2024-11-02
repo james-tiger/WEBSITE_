@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/static/styles.css"> 
+</head>
+<body>
+    <h2>Edit Book</h2>
+    <form method="POST">
+        Title: <input type="text" name="title" value="{{ book[1] }}" required>
+        Author: <input type="text" name="author" value="{{ book[2] }}" required>
+        Genre: <input type="text" name="genre" value="{{ book[3] }}" required>
+        <button type="submit">Update Book</button>
+    </form>
+    <a href="{{ url_for('books') }}">Back to Books</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
